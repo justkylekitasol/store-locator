@@ -1,0 +1,24 @@
+{{#location}}
+<li class="featured-loc_wrapper">
+  <div class="featured-loc_single">
+    <i class="fa fa-bandcamp big-fa"></i>
+    <div class="featured-loc_address">
+      <span><b>{{name}}</b></span><br>
+      <span>{{address}}</span><br>
+      {{#if address2}}
+				<span class="loc-addr2">{{address2}}</span><br>
+			{{/if}}
+      {{#if phone}}
+        <span>{{phone}}</span><br>
+      {{/if}}
+    </div>
+  </div>
+  <div class="featured-loc_links">
+    <span>{{distance}} {{length}}</span><br>
+    <span><a href="https://maps.google.com/maps?saddr={{origin}}&amp;daddr={{address}} {{address2}} {{city}}, {{state}} {{postal}}" target="_blank">Directions</a></span><br>
+    <span></span><br><br>
+    {{#if web}}<span><a href="{{web}}" target="_blank">{{niceURL web}}</a></span>&nbsp;{{/if}}
+    <span><a href="#">Email</a></span>
+  </div>
+</li>
+{{/location}}

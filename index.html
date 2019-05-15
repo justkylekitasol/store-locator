@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Store Locator</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
+</head>
+<body>
+  <main>
+    <h1 class="title">Find A Dealer</h1>
+    <div class="grid-wrapper">
+      <div class="fields">
+        <h6 class="header-text">Dealer Locator</h6>
+        <hr>
+        <form id="bh-sl-user-location" method="post" action="#">
+          <div class="field-group">
+            <div class="field-group_single name-field">
+              <label for="bh-sl-address">Enter ZIP code or enter City, State:</label><br>
+              <input type="text" id="bh-sl-address" name="bh-sl-address">
+            </div>
+            <div class="field-group_single dist-field">
+              <label for="bh-sl-maxdistance">Within:</label><br>
+              <select id="bh-sl-maxdistance" name="bh-sl-maxdistance">
+                <option value="10">10 miles</option>
+                <option value="25">25 miles</option>
+                <option value="50">50 miles</option>
+                <option value="100">100 miles</option>
+                <!-- <option value="200">200 miles</option> -->
+              </select>
+            </div>
+          </div>
+          <div class="field-submit">
+            <input id="bh-sl-submit" type="submit" value="Search">
+            <!-- <button id="bh-sl-submit" type="submit">Submit</button> -->
+          </div>
+        </form>
+      </div>
+
+      <div class="loc-info">
+        <h6 class="header-text">Location Information</h6>
+        <hr>
+        <div class="loc-info_wrapper">
+          <div class="loc-info_single">
+            <img src="1x/master-icon.png" alt="" class="icon">&nbsp;
+            <span>Fire Magic Master Dealer</span>
+          </div>
+          <div class="loc-info_single">
+            <img src="1x/dealer-icon.png" alt="" class="icon">&nbsp;
+            <span>Fire Magic Dealer</span>
+          </div>
+          <div class="loc-info_single">
+              <img src="1x/service-icon.png" alt="" class="icon">&nbsp;
+            <span>Fire Magic Service Center</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="featured-loc bh-sl-map-container" id="bh-sl-map-container">
+        <div class="bh-sl-loc-list">
+          <h6 class="header-text nearest-header">SHOWING NEAREST LOCATIONS TO "<span id="loc-value"></span>"</h6>
+          <ul class="list"></ul>
+        </div>
+      </div>
+
+      <div id="bh-sl-map" class="bh-sl-map"></div>
+      <div class="disclaimer">
+        <h3>Disclaimer Text</h3>
+      </div>
+    </div>
+  </main>
+</body>
+<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+<script src="handlebars.min.js"></script>
+<script src="https://maps.google.com/maps/api/js?key=AIzaSyBpwiORFSswuGdyklV-FZWlf4yhP9pgILc&libraries=places"></script>
+<script src="jquery.storelocator.js"></script>
+<script>
+	$(function() {
+		$('#bh-sl-map-container').storeLocator({
+      catMarkers : {
+				'MasterDealer' : ['1x/master-pointer.png', 32, 53],
+				'Dealer' : ['1x/dealer-pointer.png', 32, 53],
+        'Service' : ['1x/service-pointer.png', 32, 49]
+			},
+      autoComplete: true,
+      maxDistance: true,
+			'querystringParams' : true,
+			'fullMapStart': true,
+			// The following paths are set because this example is in a subdirectory
+			'dataLocation': 'locations.json',
+			'infowindowTemplatePath': 'infowindow-description.html',
+      'listTemplatePath': 'location-list-description.html',
+      'featuredLocations': true
+    });
+    
+  });
+  
+</script>
+</html>

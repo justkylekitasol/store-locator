@@ -1,0 +1,68 @@
+
+<link rel="stylesheet" href="style.css">
+
+{{#location}}
+
+{{#if featured}}
+<h6 class="header-text featured-header">Featured Location</h6>
+<div class="featured-list">
+  
+  <li data-markerid="{{markerid}}" class="featured-loc_wrapper">
+    <div class="featured-loc_single">
+      <img src="1x/master-big-icon.png" alt="" class="big-icon">
+      <div class="featured-loc_address">
+        <span><b>{{name}}</b></span><br>
+        <span>{{address}}</span><br>
+        {{#if address2}}
+          <span class="loc-addr2">{{address2}}</span><br>
+        {{/if}}
+        <span>{{city}}{{#if city}},{{/if}} {{state}} {{postal}}</span><br>
+        {{#if phone}}
+          <span>{{phone}}</span><br>
+        {{/if}}
+      </div>
+    </div>
+    <div class="featured-loc_links">
+      <span>({{distance}} {{length}})</span><br>
+      <span><a href="https://maps.google.com/maps?saddr={{origin}}&amp;daddr={{address}} {{address2}} {{city}}, {{state}} {{postal}}" target="_blank">Directions</a></span><br>
+      {{#if web}}<span><a href="{{web}}" target="_blank">{{niceURL web}}</a></span>{{/if}}<br>
+      <span><a href="#">Email</a></span>
+    </div>
+  </li>
+</div>
+<!-- <h6 class="header-text nearest-header">SHOWING NEAREST LOCATIONS TO "<span id="loc-value"></span>"</h6> -->
+{{else}}
+<h6 class="header-text nearest-header">SHOWING NEAREST LOCATIONS TO "<span id="loc-value"></span>"</h6>
+<li data-markerid="{{markerid}}" class="result-single">
+  <div class="result-address">
+    <div class="address-left">
+      <div class="address-name">
+        <span><b>{{name}}</b></span><br>
+        {{#if servicecenter}}
+          <img src="1x/service-icon.png" alt="" class="wench">
+        {{/if}}
+      </div>
+      <span>{{address}}</span><br>
+      
+      {{#if address2}}
+        <span class="loc-addr2">{{address2}}</span><br>
+      {{/if}}
+      <span>{{city}}{{#if city}},{{/if}} {{state}} {{postal}}</span><br>
+      {{#if phone}}
+        <span>{{phone}}</span><br>
+      {{/if}}
+    </div>
+  </div>
+  <div class="result-links">
+    {{#if distance}}
+    <span>({{distance}} {{length}})</span><br>
+    <span><a href="https://maps.google.com/maps?saddr={{origin}}&amp;daddr={{address}} {{address2}} {{city}}, {{state}} {{postal}}" target="_blank">Directions</a></span><br>
+    <!-- <span></span><br><br> -->
+    {{#if web}}<span><a href="{{web}}" target="_blank">{{niceURL web}}</a></span>{{/if}}<br>
+    <span><a href="#">Email</a></span>
+    {{/if}}
+  </div>
+</li>
+{{/if}}
+
+{{/location}}
